@@ -1,0 +1,6 @@
+.vercel/
+.env
+.env.*
+gateway.test.mjs
+CHAT_SETUP.md
+README.md
