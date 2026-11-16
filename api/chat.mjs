@@ -8,10 +8,10 @@ export async function POST(request) {
   let payload;
   try {
     const body = await request.text();
-    if (body.length > 2500000) return new Response(null,{status:413});
+    if (Buffer.byteLength(body) > 4000000) return new Response(null,{status:413});
     payload = JSON.parse(body);
   } catch {return new Response(null,{status:400});}
-  if (typeof payload.question !== 'string' || !payload.question.trim() || payload.question.length > 12000 || !Array.isArray(payload.history) || payload.history.length > 6 || !Array.isArray(payload.attachments) || payload.attachments.length > 1) return new Response(null,{status:400});
+  if (typeof payload.question !== 'string' || (!payload.question.trim() && !(payload.attachments?.length)) || payload.question.length > 12000 || !Array.isArray(payload.history) || payload.history.length > 6 || !Array.isArray(payload.attachments) || payload.attachments.length > 3) return new Response(null,{status:400});
   const clean = {question:payload.question,history:payload.history,attachments:payload.attachments};
   try {
     const upstream = await fetch('https://medicalchatbot-giyy.onrender.com/chat', {

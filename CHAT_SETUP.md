@@ -9,3 +9,5 @@ This version is a public demo chatbot: frontend demo login and Origin checks are
 Chat history stays in memory, is limited to the latest six messages sent upstream, and is discarded when the chat panel closes. The selected synthetic PDF is sent to the existing medical RAG backend until removed. Backend/provider processing remains subject to their policies.
 
 Local verification: node --test gateway.test.mjs. Flutter source remains in the staff workspace under lib/features/patient_portal/portal_chat.dart.
+
+The portal now embeds the original E:/medical_chatbot/medbot Flutter ChatScreen, provider, attachments and source panel, adapted only for server-gateway access and temporary portal sessions. Original standalone chatbot files remain untouched. Total request body limit: 4 MB at the gateway; smaller attachments are required than the standalone backend permits.
